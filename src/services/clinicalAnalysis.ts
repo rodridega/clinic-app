@@ -272,6 +272,10 @@ class ClinicalAnalysisService {
     });
     return found;
   }
+
+  public isApiKeyConfigured(): boolean {
+    return this.apiKey !== null && this.apiKey.length > 0;
+  }
 }
 
 export const clinicalAnalysisService = new ClinicalAnalysisService();

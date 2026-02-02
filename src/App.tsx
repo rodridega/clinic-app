@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FileText, Loader2 } from 'lucide-react';
+import { FileText, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { ClinicalReviewResults } from './components/ClinicalReviewResults';
 import { clinicalAnalysisService } from './services/clinicalAnalysis';
 import type { ClinicalReview } from './types/clinical';
@@ -57,6 +57,37 @@ function App() {
                 <p style={{ fontSize: '0.9rem', marginTop: '0.5rem', opacity: 0.8 }}>
                     Para profesionales de la salud
                 </p>
+                
+                {/* API Status Indicator */}
+                <div style={{
+                    marginTop: '1rem',
+                    padding: '0.75rem 1rem',
+                    borderRadius: '8px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    background: clinicalAnalysisService.isApiKeyConfigured() 
+                        ? 'rgba(34, 197, 94, 0.1)' 
+                        : 'rgba(251, 146, 60, 0.1)',
+                    border: clinicalAnalysisService.isApiKeyConfigured()
+                        ? '1px solid rgba(34, 197, 94, 0.3)'
+                        : '1px solid rgba(251, 146, 60, 0.3)',
+                    fontSize: '0.9rem'
+                }}>
+                    {clinicalAnalysisService.isApiKeyConfigured() ? (
+                        <>
+                            <CheckCircle size={18} style={{ color: '#22c55e' }} />
+                            <span style={{ color: '#22c55e', fontWeight: 500 }}>API Key Configurada</span>
+                            <span style={{ opacity: 0.7, marginLeft: '0.25rem' }}>- Análisis con IA activo</span>
+                        </>
+                    ) : (
+                        <>
+                            <AlertCircle size={18} style={{ color: '#fb923c' }} />
+                            <span style={{ color: '#fb923c', fontWeight: 500 }}>API Key No Configurada</span>
+                            <span style={{ opacity: 0.7, marginLeft: '0.25rem' }}>- Usando modo demo</span>
+                        </>
+                    )}
+                </div>
             </header>
 
             {/* Input Section */}

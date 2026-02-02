@@ -6,6 +6,12 @@ interface ClinicalReviewResultsProps {
     review: ClinicalReview;
 }
 
+// Función para capitalizar la primera letra de una cadena
+const capitalize = (text: string): string => {
+    if (!text) return text;
+    return text.charAt(0).toUpperCase() + text.slice(1);
+};
+
 export const ClinicalReviewResults: React.FC<ClinicalReviewResultsProps> = ({ review }) => {
     return (
         <div className="results-container">
@@ -16,7 +22,7 @@ export const ClinicalReviewResults: React.FC<ClinicalReviewResultsProps> = ({ re
                     1. Resumen Clínico
                 </h2>
                 <div className="section-content">
-                    <p>{review.resumenClinico}</p>
+                    <p>{capitalize(review.resumenClinico)}</p>
                 </div>
             </section>
 
@@ -32,7 +38,7 @@ export const ClinicalReviewResults: React.FC<ClinicalReviewResultsProps> = ({ re
                             <h3 className="subsection-title">Antecedentes</h3>
                             <ul>
                                 {review.datosRelevantes.antecedentes.map((item, idx) => (
-                                    <li key={idx}>{item}</li>
+                                    <li key={idx}>{capitalize(item)}</li>
                                 ))}
                             </ul>
                         </div>
@@ -43,7 +49,7 @@ export const ClinicalReviewResults: React.FC<ClinicalReviewResultsProps> = ({ re
                             <h3 className="subsection-title">Síntomas</h3>
                             <ul>
                                 {review.datosRelevantes.sintomas.map((item, idx) => (
-                                    <li key={idx}>{item}</li>
+                                    <li key={idx}>{capitalize(item)}</li>
                                 ))}
                             </ul>
                         </div>
@@ -54,7 +60,7 @@ export const ClinicalReviewResults: React.FC<ClinicalReviewResultsProps> = ({ re
                             <h3 className="subsection-title">Signos</h3>
                             <ul>
                                 {review.datosRelevantes.signos.map((item, idx) => (
-                                    <li key={idx}>{item}</li>
+                                    <li key={idx}>{capitalize(item)}</li>
                                 ))}
                             </ul>
                         </div>
@@ -65,7 +71,7 @@ export const ClinicalReviewResults: React.FC<ClinicalReviewResultsProps> = ({ re
                             <h3 className="subsection-title">Estudios Mencionados</h3>
                             <ul>
                                 {review.datosRelevantes.estudios.map((item, idx) => (
-                                    <li key={idx}>{item}</li>
+                                    <li key={idx}>{capitalize(item)}</li>
                                 ))}
                             </ul>
                         </div>
@@ -76,7 +82,7 @@ export const ClinicalReviewResults: React.FC<ClinicalReviewResultsProps> = ({ re
                             <h3 className="subsection-title">Medicación Previa</h3>
                             <ul>
                                 {review.datosRelevantes.medicacionPrevia.map((item, idx) => (
-                                    <li key={idx}>{item}</li>
+                                    <li key={idx}>{capitalize(item)}</li>
                                 ))}
                             </ul>
                         </div>
@@ -100,7 +106,7 @@ export const ClinicalReviewResults: React.FC<ClinicalReviewResultsProps> = ({ re
                     {review.redFlags.length > 0 ? (
                         <ul>
                             {review.redFlags.map((flag, idx) => (
-                                <li key={idx} className="red-flag-item">{flag}</li>
+                                <li key={idx} className="red-flag-item">{capitalize(flag)}</li>
                             ))}
                         </ul>
                     ) : (
@@ -121,7 +127,7 @@ export const ClinicalReviewResults: React.FC<ClinicalReviewResultsProps> = ({ re
                     {review.informacionFaltante.length > 0 ? (
                         <ul>
                             {review.informacionFaltante.map((item, idx) => (
-                                <li key={idx}>{item}</li>
+                                <li key={idx}>{capitalize(item)}</li>
                             ))}
                         </ul>
                     ) : (
@@ -138,7 +144,7 @@ export const ClinicalReviewResults: React.FC<ClinicalReviewResultsProps> = ({ re
                     <Shield size={20} />
                     <strong>Advertencia de Uso</strong>
                 </div>
-                <p>{review.advertencia}</p>
+                <p>{capitalize(review.advertencia)}</p>
             </div>
         </div>
     );
