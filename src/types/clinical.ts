@@ -5,6 +5,8 @@ export interface ClinicalReview {
   datosRelevantes: DatosRelevantes;
   redFlags: string[];
   informacionFaltante: string[];
+  diagnosticosDiferenciales: string[];
+  estudiosSugeridos: string[];
   advertencia: string;
 }
 

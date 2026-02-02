@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, AlertTriangle, HelpCircle, Activity, Shield } from 'lucide-react';
+import { FileText, AlertTriangle, HelpCircle, Activity, Shield, Stethoscope, FlaskConical } from 'lucide-react';
 import type { ClinicalReview } from '../types/clinical';
 
 interface ClinicalReviewResultsProps {
@@ -133,6 +133,48 @@ export const ClinicalReviewResults: React.FC<ClinicalReviewResultsProps> = ({ re
                     ) : (
                         <p style={{ fontStyle: 'italic', opacity: 0.7 }}>
                             No se identificó información faltante crítica.
+                        </p>
+                    )}
+                </div>
+            </section>
+
+            {/* 5. Diagnósticos Diferenciales */}
+            <section className="section">
+                <h2 className="section-title">
+                    <Stethoscope size={24} />
+                    5. Diagnósticos Diferenciales
+                </h2>
+                <div className="section-content">
+                    {review.diagnosticosDiferenciales.length > 0 ? (
+                        <ul>
+                            {review.diagnosticosDiferenciales.map((item, idx) => (
+                                <li key={idx}>{capitalize(item)}</li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p style={{ fontStyle: 'italic', opacity: 0.7 }}>
+                            No se generaron diagnósticos diferenciales.
+                        </p>
+                    )}
+                </div>
+            </section>
+
+            {/* 6. Estudios Sugeridos */}
+            <section className="section">
+                <h2 className="section-title">
+                    <FlaskConical size={24} />
+                    6. Estudios Sugeridos
+                </h2>
+                <div className="section-content">
+                    {review.estudiosSugeridos.length > 0 ? (
+                        <ul>
+                            {review.estudiosSugeridos.map((item, idx) => (
+                                <li key={idx}>{capitalize(item)}</li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p style={{ fontStyle: 'italic', opacity: 0.7 }}>
+                            No se sugirieron estudios complementarios.
                         </p>
                     )}
                 </div>
