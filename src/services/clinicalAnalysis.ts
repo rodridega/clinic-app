@@ -124,6 +124,13 @@ class ClinicalAnalysisService {
     }
 
     private async tryModel(model: string, textoClinico: string): Promise<AnalysisResponse> {
+        // Crear AbortController para timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => {
+            controller.abort();
+            console.warn(`⏱️ [Clinical] Timeout de 15s alcanzado con ${model}, cambiando de modelo...`);
+        }, 15000); // 15 segundos
+
         try {
             console.log('🌐 [DEBUG] Preparando request a OpenRouter...');
 
@@ -153,8 +160,11 @@ class ClinicalAnalysisService {
                     'HTTP-Referer': window.location.origin,
                     'X-Title': 'Clinic App'
                 },
-                body: JSON.stringify(requestPayload)
+                body: JSON.stringify(requestPayload),
+                signal: controller.signal // Agregar signal para timeout
             });
+
+            clearTimeout(timeoutId); // Limpiar timeout si la respuesta llega a tiempo
 
             console.log('📥 [DEBUG] Response status:', response.status, response.statusText);
 
@@ -217,6 +227,14 @@ class ClinicalAnalysisService {
             };
 
         } catch (error) {
+            clearTimeout(timeoutId); // Asegurar limpieza del timeout
+            
+            // Verificar si fue un timeout
+            if (error instanceof Error && error.name === 'AbortError') {
+                console.error(`⏱️ [Clinical] Timeout: ${model} demoró más de 15 segundos`);
+                throw new Error('Timeout: modelo tardó más de 15 segundos');
+            }
+            
             console.error('💥 [DEBUG] Error en modelo:', error);
             // Re-lanzar el error para que el método principal lo maneje
             throw error;

@@ -11,14 +11,17 @@ Asistir a profesionales de la salud en la organización y revisión de textos cl
 - Médicos
 - Residentes
 - Clínicos
-- Profesionales de la salud
+- Profesionales de la salud en UTI y áreas de internación
 
 ## ✨ Características
 
-### Análisis Estructurado de Textos Clínicos
+La aplicación ahora cuenta con **dos herramientas principales**:
 
-La aplicación procesa texto clínico libre y genera una estructura de revisión con 5 secciones:
+### 1. 📋 Revisión de Historia Clínica
 
+Procesa historias clínicas desordenadas y genera una estructura de revisión con 8 secciones:
+
+#### 1️⃣ Resumen Clínico
 #### 1️⃣ Resumen Clínico
 - 3-5 líneas en lenguaje médico
 - Sin interpretaciones
@@ -43,9 +46,62 @@ La aplicación procesa texto clínico libre y genera una estructura de revisión
 - Medicación actual no detallada
 - Cualquier dato clínico clave ausente
 
-#### 5️⃣ Advertencia de Uso
-Siempre presente:
-> "Este resumen es una herramienta de apoyo para profesionales de la salud. No emite diagnósticos ni recomendaciones terapéuticas y no reemplaza el criterio clínico."
+#### 5️⃣ Diagnósticos Diferenciales
+- Posibles diagnósticos basados en la información presentada
+- Sin confirmación, solo orientativos
+
+#### 6️⃣ Estudios Sugeridos
+- Estudios complementarios que podrían aportar información relevante
+- Basados en la presentación clínica
+
+### 2. 🏥 Pase UTI → Planta
+
+Resume cronológicamente múltiples evoluciones de UTI en una historia única para el pase a Planta, con 8 secciones:
+
+#### 1️⃣ Resumen Cronológico Integrado
+- Narrativa continua desde ingreso hasta egreso de UTI
+- Motivo de ingreso
+- Principales eventos
+- Evolución general
+- Condición clínica al egreso
+
+#### 2️⃣ Línea de Tiempo Resumida
+- Eventos organizados por día/fecha
+- Cambios clínicos significativos
+- Modificaciones terapéuticas
+
+#### 3️⃣ Estudios Realizados
+- **Laboratorio**: Estudios y hallazgos relevantes
+- **Imágenes**: Tipo de estudio y resultados
+- **Otros**: Procedimientos adicionales
+
+#### 4️⃣ Estudios Pendientes o en Curso
+- Estudios solicitados sin resultado
+- Controles sugeridos pendientes
+
+#### 5️⃣ Tratamientos Recibidos en UTI
+- **Soporte**: Ventilación, drogas vasoactivas
+- **Medicación**: Antibióticos, corticoides, anticoagulación
+- **Procedimientos**: Intervenciones invasivas
+
+#### 6️⃣ Plan de Egreso de UTI
+- Indicaciones al pase a Planta
+- Tratamientos a continuar/suspender/reevaluar
+- Objetivos clínicos planteados
+
+#### 7️⃣ Puntos a Vigilar en Planta
+- Aspectos clínicos que requieren seguimiento
+- Riesgos mencionados o implícitos
+
+#### 8️⃣ Información Faltante o Poco Clara
+- Datos clave ausentes para continuidad del cuidado
+
+## 🔄 Navegación
+
+La aplicación cuenta con una página de inicio donde puedes elegir entre las dos herramientas:
+- `/` - Página principal con selección de herramienta
+- `/clinical-review` - Revisión de Historia Clínica
+- `/uti-transfer` - Pase UTI → Planta
 
 ## 🚀 Instalación
 
