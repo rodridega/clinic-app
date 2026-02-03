@@ -10,6 +10,7 @@ export default function ClinicalReview() {
     const [isAnalyzing, setIsAnalyzing] = useState(false);
     const [result, setResult] = useState<ClinicalReview | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [showDelayWarning, setShowDelayWarning] = useState(false);
 
     const handleAnalyze = async () => {
         if (!clinicalText.trim()) {
@@ -20,6 +21,12 @@ export default function ClinicalReview() {
         setIsAnalyzing(true);
         setError(null);
         setResult(null);
+        setShowDelayWarning(false);
+
+        // Timer para mostrar aviso de demora después de 10 segundos
+        const delayTimer = setTimeout(() => {
+            setShowDelayWarning(true);
+        }, 10000);
 
         try {
             const response = await clinicalAnalysisService.analyzeClinicalText({
@@ -35,7 +42,9 @@ export default function ClinicalReview() {
             setError('Error al procesar la solicitud. Por favor, intenta nuevamente.');
             console.error(err);
         } finally {
+            clearTimeout(delayTimer);
             setIsAnalyzing(false);
+            setShowDelayWarning(false);
         }
     };
 
@@ -140,11 +149,26 @@ export default function ClinicalReview() {
                 </div>
             </section>
 
-            {/* Loading State */}
+            {/* Loading State with Delay Warning */}
             {isAnalyzing && (
                 <div className="loading">
                     <div className="loading-spinner"></div>
                     <p>Procesando texto clínico...</p>
+                    {showDelayWarning && (
+                        <div style={{
+                            marginTop: '1rem',
+                            padding: '1rem',
+                            background: 'rgba(251, 146, 60, 0.1)',
+                            border: '1px solid rgba(251, 146, 60, 0.3)',
+                            borderRadius: '8px',
+                            color: '#ea580c',
+                            fontSize: '0.95rem'
+                        }}>
+                            ⏱️ <strong>Esto está tomando más tiempo de lo esperado.</strong>
+                            <br />
+                            <span style={{ opacity: 0.9 }}>El sistema está probando diferentes modelos. Por favor, espera un momento más...</span>
+                        </div>
+                    )}
                 </div>
             )}
 

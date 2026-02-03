@@ -590,3 +590,142 @@ button:focus-visible {
 .copy-button:active {
   transform: translateY(0);
 }
+
+/* Laboratory table styles */
+.lab-table-container {
+  margin: 1.5rem 0;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .lab-table-container {
+    background: #2a2a2a;
+    border-color: #444;
+  }
+}
+
+.lab-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(102, 153, 52, 0.05);
+  border-bottom: 1px solid #dee2e6;
+}
+
+@media (prefers-color-scheme: dark) {
+  .lab-table-header {
+    background: rgba(102, 153, 52, 0.1);
+    border-bottom-color: #444;
+  }
+}
+
+.copy-table-button {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  background: #669934;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copy-table-button:hover {
+  background: #4a7c1f;
+  transform: translateY(-1px);
+}
+
+.lab-table-wrapper {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.lab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.lab-table thead {
+  background: #f8f9fa;
+}
+
+@media (prefers-color-scheme: dark) {
+  .lab-table thead {
+    background: #1a1a1a;
+  }
+}
+
+.lab-table th {
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  color: #669934;
+  border-bottom: 2px solid #669934;
+  white-space: nowrap;
+}
+
+.lab-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+@media (prefers-color-scheme: dark) {
+  .lab-table td {
+    border-bottom-color: #333;
+  }
+}
+
+.lab-table tbody tr:hover {
+  background: rgba(102, 153, 52, 0.03);
+}
+
+@media (prefers-color-scheme: dark) {
+  .lab-table tbody tr:hover {
+    background: rgba(102, 153, 52, 0.08);
+  }
+}
+
+.lab-param-name {
+  font-weight: 600;
+  color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  .lab-param-name {
+    color: #e0e0e0;
+  }
+}
+
+.lab-unit {
+  color: #666;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+@media (prefers-color-scheme: dark) {
+  .lab-unit {
+    color: #999;
+  }
+}
+
+.lab-value {
+  font-family: 'Courier New', monospace;
+  font-weight: 500;
+  text-align: center;
+  color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  .lab-value {
+    color: #e0e0e0;
+  }
+}

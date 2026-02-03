@@ -18,8 +18,20 @@ export interface TimelineEntry {
 
 export interface EstudiosRealizados {
   laboratorio: string[];
+  laboratorioTabla?: LaboratorioTabla; // Tabla estructurada opcional
   imagenes: string[];
   otros: string[];
+}
+
+export interface LaboratorioTabla {
+  fechas: string[]; // Array de fechas/días
+  parametros: LaboratorioParametro[]; // Array de parámetros con sus valores
+}
+
+export interface LaboratorioParametro {
+  nombre: string; // Ej: "Hemoglobina", "Leucocitos", "Creatinina"
+  valores: string[]; // Valores correspondientes a cada fecha (mismo orden que fechas)
+  unidad?: string; // Ej: "g/dL", "mg/dL", etc.
 }
 
 export interface TratamientosUti {

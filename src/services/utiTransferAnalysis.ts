@@ -22,6 +22,10 @@ Eliminá repeticiones, pero conservá cambios en la evolución.
 
 Usá lenguaje médico claro, neutral y conciso.
 
+IMPORTANTE PARA LABORATORIO: En "laboratorioTabla" debes incluir TODOS los parámetros de laboratorio mencionados en las evoluciones (hemograma completo, función renal, función hepática, ionograma, coagulación, marcadores inflamatorios, etc.). No te limites a los ejemplos mostrados. Extrae CADA valor de laboratorio que encuentres en el texto, organizándolos por fecha o día de evolución.
+
+IMPORTANTE PARA ESTUDIOS POR IMÁGENES: En "imagenes" dentro de "estudiosRealizados" debes incluir TODOS los estudios por imágenes mencionados en las evoluciones: Radiografías (tórax, abdomen, etc.), Ecografías (abdominal, cardíaca, renovesical, doppler, etc.), Tomografías, Resonancias, Endoscopías (VEDA, colonoscopía, rectosigmoidoscopía), Ecocardiogramas. Extrae CADA estudio de imagen que encuentres con su fecha y hallazgos principales.
+
 Responde ÚNICAMENTE con un objeto JSON con esta estructura exacta:
 
 {
@@ -33,9 +37,34 @@ Responde ÚNICAMENTE con un objeto JSON con esta estructura exacta:
     }
   ],
   "estudiosRealizados": {
-    "laboratorio": ["estudio: hallazgo relevante"],
-    "imagenes": ["tipo de estudio: resultado"],
-    "otros": ["procedimiento: resultado"]
+    "laboratorio": ["Solo usa este campo si NO puedes estructurar los datos en tabla"],
+    "laboratorioTabla": {
+      "fechas": ["Día 1", "Día 3", "Día 5"],
+      "parametros": [
+        {
+          "nombre": "Hemoglobina",
+          "valores": ["12.5", "11.2", "10.8"],
+          "unidad": "g/dL"
+        },
+        {
+          "nombre": "Leucocitos",
+          "valores": ["15000", "12000", "9000"],
+          "unidad": "/mm3"
+        },
+        {
+          "nombre": "Creatinina",
+          "valores": ["1.2", "1.5", "1.1"],
+          "unidad": "mg/dL"
+        },
+        {
+          "nombre": "PCR",
+          "valores": ["25", "18", "12"],
+          "unidad": "mg/L"
+        }
+      ]
+    },
+    "imagenes": ["IMPORTANTE: Incluir TODOS los estudios por imágenes mencionados: Rx de tórax, Rx de abdomen, Ecografías (abdominal, cardíaca, renovesical, etc.), Tomografías, Resonancias, Endoscopías (VEDA, colonoscopía, etc.), Ecocardiogramas. Formato: 'Fecha - Tipo de estudio: hallazgos principales'"],
+    "otros": ["Incluir procedimientos invasivos y otros estudios no categorizados arriba (ej: punciones, biopsias, estudios funcionales). Formato: 'Fecha - Procedimiento: resultado'"]
   },
   "estudiosPendientes": ["estudio pendiente 1", "control sugerido sin realizar"],
   "tratamientosUti": {
@@ -134,10 +163,11 @@ async function tryModel(modelName: string, evolutions: string): Promise<UtiTrans
     return {
       resumenCronologico: parsedData.resumenCronologico || '',
       lineaTiempo: parsedData.lineaTiempo || [],
-      estudiosRealizados: parsedData.estudiosRealizados || {
-        laboratorio: [],
-        imagenes: [],
-        otros: []
+      estudiosRealizados: {
+        laboratorio: parsedData.estudiosRealizados?.laboratorio || [],
+        laboratorioTabla: parsedData.estudiosRealizados?.laboratorioTabla || undefined,
+        imagenes: parsedData.estudiosRealizados?.imagenes || [],
+        otros: parsedData.estudiosRealizados?.otros || []
       },
       estudiosPendientes: parsedData.estudiosPendientes || [],
       tratamientosUti: parsedData.tratamientosUti || {

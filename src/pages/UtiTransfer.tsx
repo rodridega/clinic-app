@@ -10,11 +10,18 @@ export default function UtiTransferPage() {
   const [result, setResult] = useState<UtiTransfer | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showDelayWarning, setShowDelayWarning] = useState(false);
 
   const handleAnalyze = async (evolutions: string) => {
     setIsLoading(true);
     setError(null);
     setResult(null);
+    setShowDelayWarning(false);
+
+    // Timer para mostrar aviso de demora después de 10 segundos
+    const delayTimer = setTimeout(() => {
+      setShowDelayWarning(true);
+    }, 10000);
 
     try {
       const analysis = await analyzeUtiTransfer(evolutions);
@@ -23,7 +30,9 @@ export default function UtiTransferPage() {
       setError('Error al procesar las evoluciones. Por favor, intenta nuevamente.');
       console.error(err);
     } finally {
+      clearTimeout(delayTimer);
       setIsLoading(false);
+      setShowDelayWarning(false);
     }
   };
 
@@ -102,6 +111,29 @@ export default function UtiTransferPage() {
           </button>
         )}
       </section>
+
+      {/* Loading State with Delay Warning */}
+      {isLoading && (
+        <div className="loading">
+          <div className="loading-spinner"></div>
+          <p>Procesando evoluciones de UTI...</p>
+          {showDelayWarning && (
+            <div style={{
+              marginTop: '1rem',
+              padding: '1rem',
+              background: 'rgba(251, 146, 60, 0.1)',
+              border: '1px solid rgba(251, 146, 60, 0.3)',
+              borderRadius: '8px',
+              color: '#ea580c',
+              fontSize: '0.95rem'
+            }}>
+              ⏱️ <strong>Esto está tomando más tiempo de lo esperado.</strong>
+              <br />
+              <span style={{ opacity: 0.9 }}>El sistema está probando diferentes modelos. Por favor, espera un momento más...</span>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Error Message */}
       {error && (

@@ -24,6 +24,7 @@ const capitalize = (text: string): string => {
 
 export const UtiTransferResults: React.FC<UtiTransferResultsProps> = ({ results }) => {
   const [copied, setCopied] = useState(false);
+  const [copiedTable, setCopiedTable] = useState(false);
 
   const handleCopyText = async () => {
     try {
@@ -32,6 +33,28 @@ export const UtiTransferResults: React.FC<UtiTransferResultsProps> = ({ results 
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error('Error al copiar:', err);
+    }
+  };
+
+  const handleCopyTable = async () => {
+    if (!results.estudiosRealizados.laboratorioTabla) return;
+    
+    try {
+      const { fechas, parametros } = results.estudiosRealizados.laboratorioTabla;
+      
+      // Crear tabla en formato texto con tabs (compatible con Excel/Sheets)
+      let tableText = 'Parámetro\tUnidad\t' + fechas.join('\t') + '\n';
+      
+      parametros.forEach(param => {
+        const unidad = param.unidad || '';
+        tableText += `${param.nombre}\t${unidad}\t${param.valores.join('\t')}\n`;
+      });
+      
+      await navigator.clipboard.writeText(tableText);
+      setCopiedTable(true);
+      setTimeout(() => setCopiedTable(false), 2000);
+    } catch (err) {
+      console.error('Error al copiar tabla:', err);
     }
   };
 
@@ -83,13 +106,68 @@ export const UtiTransferResults: React.FC<UtiTransferResultsProps> = ({ results 
         <div className="section-content">
           <div className="subsection">
             <h3 className="subsection-title">Laboratorio</h3>
+            
+            {/* Tabla comparativa de laboratorios */}
+            {results.estudiosRealizados.laboratorioTabla && results.estudiosRealizados.laboratorioTabla.parametros.length > 0 && (
+              <div className="lab-table-container">
+                <div className="lab-table-header">
+                  <span style={{ fontSize: '0.9rem', color: '#666' }}>
+                    📊 Evolución de valores de laboratorio
+                  </span>
+                  <button 
+                    onClick={handleCopyTable}
+                    className="copy-table-button"
+                    title="Copiar tabla"
+                  >
+                    {copiedTable ? (
+                      <>
+                        <Check size={16} />
+                        <span>¡Copiada!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={16} />
+                        <span>Copiar tabla</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+                
+                <div className="lab-table-wrapper">
+                  <table className="lab-table">
+                    <thead>
+                      <tr>
+                        <th>Parámetro</th>
+                        <th>Unidad</th>
+                        {results.estudiosRealizados.laboratorioTabla.fechas.map((fecha, i) => (
+                          <th key={i}>{capitalize(fecha)}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {results.estudiosRealizados.laboratorioTabla.parametros.map((param, i) => (
+                        <tr key={i}>
+                          <td className="lab-param-name">{capitalize(param.nombre)}</td>
+                          <td className="lab-unit">{param.unidad || '-'}</td>
+                          {param.valores.map((valor, j) => (
+                            <td key={j} className="lab-value">{valor}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+            
+            {/* Lista de laboratorios (formato anterior) */}
             {results.estudiosRealizados.laboratorio.length > 0 ? (
               <ul>
                 {results.estudiosRealizados.laboratorio.map((item, i) => (
                   <li key={i}>{capitalize(item)}</li>
                 ))}
               </ul>
-            ) : (
+            ) : !results.estudiosRealizados.laboratorioTabla && (
               <p className="empty-state">No se mencionaron estudios de laboratorio.</p>
             )}
           </div>
