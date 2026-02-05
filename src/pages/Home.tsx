@@ -21,7 +21,7 @@ export default function Home() {
 
       <div className="home-cards-container">
         {/* Clinical Review Card */}
-        <Link to="/clinical-review" className="home-card">
+        {/*  <Link to="/clinical-review" className="home-card">
           <div className="home-card-icon">
             <FileText size={48} />
           </div>
@@ -35,7 +35,7 @@ export default function Home() {
           <div className="home-card-action">
             Comenzar <ArrowRight size={20} />
           </div>
-        </Link>
+        </Link> */}
 
         {/* UTI Transfer Card */}
         <Link to="/uti-transfer" className="home-card">
