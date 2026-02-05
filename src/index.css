@@ -49,7 +49,7 @@ button {
 }
 
 button:hover {
-  border-color: #669934;
+  border-color: #2563eb;
 }
 
 button:focus,
@@ -78,7 +78,7 @@ button:focus-visible {
   text-align: center;
   margin-bottom: 2rem;
   padding: 2rem;
-  background: linear-gradient(135deg, #669934 0%, #4a7c1f 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   border-radius: 12px;
   color: white;
 }
@@ -115,7 +115,7 @@ button:focus-visible {
 
 .clinical-textarea:focus {
   outline: none;
-  border-color: #669934;
+  border-color: #2563eb;
 }
 
 .char-count {
@@ -129,7 +129,7 @@ button:focus-visible {
   width: 100%;
   padding: 1rem 2rem;
   font-size: 1.1rem;
-  background: linear-gradient(135deg, #669934 0%, #4a7c1f 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -140,7 +140,7 @@ button:focus-visible {
 
 .analyze-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 153, 52, 0.4);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
 }
 
 .analyze-button:disabled {
@@ -152,7 +152,7 @@ button:focus-visible {
   text-align: center;
   padding: 2rem;
   font-size: 1.1rem;
-  color: #669934;
+  color: #2563eb;
 }
 
 .loading-spinner {
@@ -160,7 +160,7 @@ button:focus-visible {
   width: 40px;
   height: 40px;
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #669934;
+  border-top: 4px solid #2563eb;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -203,7 +203,7 @@ button:focus-visible {
   margin-bottom: 1rem;
   font-size: 1.3rem;
   font-weight: 600;
-  color: #669934;
+  color: #2563eb;
 }
 
 .section-content {
@@ -225,7 +225,7 @@ button:focus-visible {
   content: "•";
   position: absolute;
   left: 0.5rem;
-  color: #669934;
+  color: #2563eb;
   font-weight: bold;
 }
 
@@ -267,7 +267,7 @@ button:focus-visible {
 
 .subsection-title {
   font-weight: 600;
-  color: #4a7c1f;
+  color: #1e40af;
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
 }
@@ -296,7 +296,7 @@ button:focus-visible {
 .timeline-entry {
   margin-bottom: 1.5rem;
   padding-left: 1rem;
-  border-left: 4px solid #669934;
+  border-left: 4px solid #2563eb;
 }
 
 .timeline-entry:last-child {
@@ -355,7 +355,7 @@ button:focus-visible {
   text-align: center;
   margin-bottom: 3rem;
   padding: 3rem 2rem;
-  background: linear-gradient(135deg, #669934 0%, #4a7c1f 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   border-radius: 16px;
   color: white;
 }
@@ -401,7 +401,7 @@ button:focus-visible {
 .home-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  border-color: #669934;
+  border-color: #2563eb;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -419,7 +419,7 @@ button:focus-visible {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #669934 0%, #4a7c1f 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -463,7 +463,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #669934;
+  color: #2563eb;
   font-weight: 600;
   transition: gap 0.3s ease;
 }
@@ -475,9 +475,9 @@ button:focus-visible {
 .home-footer {
   text-align: center;
   padding: 2rem;
-  background: rgba(102, 153, 52, 0.1);
+  background: rgba(37, 99, 235, 0.1);
   border-radius: 12px;
-  border: 1px solid rgba(102, 153, 52, 0.2);
+  border: 1px solid rgba(37, 99, 235, 0.2);
 }
 
 .home-footer-warning {
@@ -494,8 +494,8 @@ button:focus-visible {
 
 @media (prefers-color-scheme: dark) {
   .home-footer {
-    background: rgba(102, 153, 52, 0.15);
-    border-color: rgba(102, 153, 52, 0.3);
+    background: rgba(37, 99, 235, 0.15);
+    border-color: rgba(37, 99, 235, 0.3);
   }
   
   .home-footer-warning {
@@ -523,8 +523,8 @@ button:focus-visible {
 
 /* Copy text section styles */
 .section-highlight {
-  background: linear-gradient(to right, rgba(102, 153, 52, 0.05), rgba(102, 153, 52, 0.02));
-  border-left: 4px solid #669934;
+  background: linear-gradient(to right, rgba(37, 99, 235, 0.05), rgba(37, 99, 235, 0.02));
+  border-left: 4px solid #2563eb;
 }
 
 .copy-text-container {
@@ -570,7 +570,7 @@ button:focus-visible {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #669934;
+  background: #2563eb;
   color: white;
   border: none;
   border-radius: 6px;
@@ -582,7 +582,7 @@ button:focus-visible {
 }
 
 .copy-button:hover {
-  background: #4a7c1f;
+  background: #1e40af;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -612,13 +612,13 @@ button:focus-visible {
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  background: rgba(102, 153, 52, 0.05);
+  background: rgba(37, 99, 235, 0.05);
   border-bottom: 1px solid #dee2e6;
 }
 
 @media (prefers-color-scheme: dark) {
   .lab-table-header {
-    background: rgba(102, 153, 52, 0.1);
+    background: rgba(37, 99, 235, 0.1);
     border-bottom-color: #444;
   }
 }
@@ -628,7 +628,7 @@ button:focus-visible {
   align-items: center;
   gap: 0.4rem;
   padding: 0.4rem 0.8rem;
-  background: #669934;
+  background: #2563eb;
   color: white;
   border: none;
   border-radius: 6px;
@@ -639,7 +639,7 @@ button:focus-visible {
 }
 
 .copy-table-button:hover {
-  background: #4a7c1f;
+  background: #1e40af;
   transform: translateY(-1px);
 }
 
@@ -668,8 +668,8 @@ button:focus-visible {
   padding: 0.75rem;
   text-align: left;
   font-weight: 600;
-  color: #669934;
-  border-bottom: 2px solid #669934;
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
   white-space: nowrap;
 }
 
@@ -685,12 +685,12 @@ button:focus-visible {
 }
 
 .lab-table tbody tr:hover {
-  background: rgba(102, 153, 52, 0.03);
+  background: rgba(37, 99, 235, 0.03);
 }
 
 @media (prefers-color-scheme: dark) {
   .lab-table tbody tr:hover {
-    background: rgba(102, 153, 52, 0.08);
+    background: rgba(37, 99, 235, 0.08);
   }
 }
 
