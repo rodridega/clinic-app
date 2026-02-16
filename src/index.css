@@ -729,3 +729,231 @@ button:focus-visible {
     color: #e0e0e0;
   }
 }
+
+/* Guard Receipt Results Styles */
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .results-header {
+    border-bottom-color: #444;
+  }
+}
+
+.results-header h2 {
+  font-size: 1.8rem;
+  color: #2563eb;
+  margin: 0;
+}
+
+.diagnostic-card {
+  background: rgba(37, 99, 235, 0.03);
+  border-left: 4px solid #2563eb;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .diagnostic-card {
+    background: rgba(37, 99, 235, 0.08);
+  }
+}
+
+.diagnostic-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .diagnostic-title {
+    color: #60a5fa;
+  }
+}
+
+.documented-item {
+  color: #059669;
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  .documented-item {
+    color: #34d399;
+  }
+}
+
+.documented-item:before {
+  content: "✓" !important;
+  color: #059669 !important;
+  font-weight: bold;
+}
+
+@media (prefers-color-scheme: dark) {
+  .documented-item:before {
+    color: #34d399 !important;
+  }
+}
+
+.missing-item {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  .missing-item {
+    color: #f87171;
+  }
+}
+
+.missing-item:before {
+  content: "⚠" !important;
+  color: #dc2626 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .missing-item:before {
+    color: #f87171 !important;
+  }
+}
+
+.warning-title {
+  color: #dc2626 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .warning-title {
+    color: #f87171 !important;
+  }
+}
+
+.hypothesis-item {
+  background: rgba(251, 146, 60, 0.05);
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  border-left: 3px solid #fb923c;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hypothesis-item {
+    background: rgba(251, 146, 60, 0.1);
+  }
+}
+
+.hypothesis-item:before {
+  content: "💡" !important;
+  margin-right: 0.5rem;
+}
+
+.action-card {
+  background: rgba(99, 102, 241, 0.03);
+  border-left: 4px solid #6366f1;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .action-card {
+    background: rgba(99, 102, 241, 0.08);
+  }
+}
+
+.missing-info-item {
+  background: rgba(234, 88, 12, 0.05);
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  border-left: 3px solid #ea580c;
+  color: #ea580c;
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  .missing-info-item {
+    background: rgba(234, 88, 12, 0.1);
+    color: #fb923c;
+  }
+}
+
+.missing-info-item:before {
+  content: "⚠" !important;
+  color: #ea580c !important;
+  margin-right: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .missing-info-item:before {
+    color: #fb923c !important;
+  }
+}
+
+.disclaimer-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e0e0e0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .disclaimer-section {
+    border-top-color: #444;
+  }
+}
+
+.disclaimer-content {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+@media (prefers-color-scheme: dark) {
+  .disclaimer-content {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+}
+
+.disclaimer-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #2563eb;
+  font-size: 1.1rem;
+}
+
+.disclaimer-content p {
+  margin: 0;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+@media (prefers-color-scheme: dark) {
+  .disclaimer-content p {
+    color: #d1d5db;
+  }
+}
+
+.results-footer {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .results-footer {
+    border-top-color: #444;
+  }
+}

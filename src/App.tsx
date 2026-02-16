@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ClinicalReview from './pages/ClinicalReview';
 import UtiTransfer from './pages/UtiTransfer';
+import GuardReceipt from './pages/GuardReceipt';
 import './index.css';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/clinical-review" element={<ClinicalReview />} />
                 <Route path="/uti-transfer" element={<UtiTransfer />} />
+                <Route path="/guard-receipt" element={<GuardReceipt />} />
             </Routes>
         </BrowserRouter>
     );

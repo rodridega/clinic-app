@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FileText, Activity, ArrowRight } from 'lucide-react';
+import { FileText, Activity, ClipboardCheck, ArrowRight } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
 
       <div className="home-cards-container">
         {/* Clinical Review Card */}
-        {/*  <Link to="/clinical-review" className="home-card">
+        <Link to="/clinical-review" className="home-card">
           <div className="home-card-icon">
             <FileText size={48} />
           </div>
@@ -29,13 +29,13 @@ export default function Home() {
             Revisión de Historia Clínica
           </h2>
           <p className="home-card-description">
-            Resume y organiza historias clínicas desordenadas. 
+            Resume y organiza historias clínicas desordenadas.
             Identifica datos relevantes, red flags e información faltante.
           </p>
           <div className="home-card-action">
             Comenzar <ArrowRight size={20} />
           </div>
-        </Link> */}
+        </Link>
 
         {/* UTI Transfer Card */}
         <Link to="/uti-transfer" className="home-card">
@@ -48,6 +48,23 @@ export default function Home() {
           <p className="home-card-description">
             Integra evoluciones de UTI en una historia cronológica clara
             para el médico que recibe al paciente en Planta.
+          </p>
+          <div className="home-card-action">
+            Comenzar <ArrowRight size={20} />
+          </div>
+        </Link>
+
+        {/* Guard Receipt Card */}
+        <Link to="/guard-receipt" className="home-card">
+          <div className="home-card-icon">
+            <ClipboardCheck size={48} />
+          </div>
+          <h2 className="home-card-title">
+            Receptor de Guardia
+          </h2>
+          <p className="home-card-description">
+            Auditoría de coherencia documental para toma de guardia.
+            Analiza qué está documentado y qué NO está documentado.
           </p>
           <div className="home-card-action">
             Comenzar <ArrowRight size={20} />
